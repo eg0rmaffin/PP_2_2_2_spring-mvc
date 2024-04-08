@@ -13,7 +13,6 @@ public class CarService {
 
     public CarService() {
         this.cars = new ArrayList<>();
-        // Заполнение списка машин данными
         cars.add(new Car("Toyota", "Camry", 2022));
         cars.add(new Car("Honda", "Civic", 2005));
         cars.add(new Car("Ford", "Fusion", 2034));

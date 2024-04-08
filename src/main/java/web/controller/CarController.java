@@ -2,6 +2,7 @@ package web.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import web.model.Car;
@@ -19,8 +20,7 @@ public class CarController {
     }
 
     @GetMapping("/cars")
-    public String getCars(@RequestParam(value = "count", required = false, defaultValue = "0") int count, Model model) {
-        try {
+    public String getCars(@RequestParam(value = "count", required = false, defaultValue = "0") int count, ModelMap model) {
             List<Car> cars;
             if (count <= 0 || count >= carService.getAllCars().size()) {
                 cars = carService.getAllCars();
@@ -29,10 +29,5 @@ public class CarController {
             }
             model.addAttribute("cars", cars);
             return "cars";
-        }catch (Exception e){
-            e.printStackTrace();
-            return "error";
-        }
-
     }
 }
